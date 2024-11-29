@@ -20,8 +20,7 @@ class Lane {
  void update() {
    // Implementing Obstacle functions when the Lane update function is called
    for(Obstacle obs : obstacles) {
-     obs.update();
-     obs.checkEdges();
+     obs.update(laneY);
    }
  }
  

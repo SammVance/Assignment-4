@@ -17,19 +17,20 @@ class Obstacle {
     velocity.limit(topspeed);
   }
   
-  void update() {
+  void update(float laneY) {
     velocity.add(acceleration);
     position.add(velocity);
+    
+    position.y = laneY; // Locks the y position within the lane's y axis
   
-  }
-  
-  void checkEdges() {
-   if(position.x > width) {
+    // Check edges
+    if(position.x > width) {
      position.x = 0;
    } if(position.x < 0) {
-     position.x = width;
+       position.x = width;
    }
   }
+
   
   void display() {
     fill(255,0,0);
