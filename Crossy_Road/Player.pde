@@ -1,3 +1,5 @@
+// The character that the player will be capable of controlling and playing the game with
+
 class Player {
   
   PVector position; // Set the position of the player
