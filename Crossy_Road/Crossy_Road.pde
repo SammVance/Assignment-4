@@ -2,7 +2,7 @@ Player player;
 ArrayList<Lane> lanes;
 
 boolean gameOver = false;
-PImage heart, greyHeart;
+PImage heart, greyHeart, background;
 int lives = 3;
 
 void setup() {
@@ -13,6 +13,7 @@ void setup() {
  // Load heart images
  heart = loadImage("heart.png");
  greyHeart = loadImage("grey_heart.png");
+ background = loadImage("grass.png");
  
  // Create various lanes with differinng speeds and directions of obstacles
  for(int i = 0; i < 7; i++) { // Create 6 lanes
@@ -21,7 +22,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  image(background, 0, 0, width, height);
     
   // Game Over screen  
   if(lives <= 0) {
@@ -32,7 +33,7 @@ void draw() {
     text("Game Over", width/2, 160);
     
     textSize(24);
-    fill(100);
+    fill(0);
     text("Click to Play Again", width/2, height/2);
     return;
   }

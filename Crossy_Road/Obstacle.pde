@@ -5,6 +5,7 @@ class Obstacle {
   PVector velocity;
   PVector acceleration;
   float w, h, topspeed;
+  PImage log;
   
   Obstacle(float x, float y) {
     position = new PVector(x,y);
@@ -15,6 +16,8 @@ class Obstacle {
     // Limit the velocity of the obstacles so they don't continue increasing speed
     topspeed = 10;
     velocity.limit(topspeed);
+    
+    log = loadImage("log.png");
   }
   
   void update(float laneY) {
@@ -33,8 +36,7 @@ class Obstacle {
 
   
   void display() {
-    fill(103,67,19);
-    rect(position.x, position.y, w, h);
+    image(log, position.x, position.y, w, h);
   }
   
   

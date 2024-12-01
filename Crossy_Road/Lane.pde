@@ -4,11 +4,14 @@ class Lane {
   float laneY;
   float laneSpeed;
   ArrayList<Obstacle> obstacles; // Create an ArrayList of obstacles for the Lanes to have
+  PImage water;
   
  Lane(float y, float speed) {
    laneY = y;
    laneSpeed = speed;
    obstacles = new ArrayList<Obstacle>();
+   
+   water = loadImage("water.jpg");
    
    // Referring to the ArrayList, add random obstacles to the lane
    for(int i = 0; i < 2; i++) { // How many obstacles are in a lane
@@ -25,12 +28,12 @@ class Lane {
  }
  
  void display() {
-  fill(83,213,234);
-  rect(0, laneY, width, 25);
-  // Obstacles will display within the lanes
-  for(Obstacle obs : obstacles) {
-    obs.display();
- }
+   image(water, 0, laneY, width, 25);
+   
+   // Obstacles will display within the lanes
+   for(Obstacle obs : obstacles) {
+     obs.display();
+   }
  } 
  
   boolean checkCollision(Player p) {
