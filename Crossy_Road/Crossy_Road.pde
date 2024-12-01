@@ -20,10 +20,11 @@ void draw() {
   // Display Lanes and Obstacles
   for(Lane lane : lanes) {
     if(lane.checkCollision(player)) {
-    gameOver = true;
+      player.resetPosition(); // Reset the player's position on collision
   } else {
     lane.update();
     lane.display();
+  }
   }
 
   
@@ -33,6 +34,5 @@ void draw() {
   
   // Display Obstacles & move them
   
-  }
   
 }

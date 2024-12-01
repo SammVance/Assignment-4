@@ -40,7 +40,10 @@ class Player {
    
    
  }
-  
+ 
+ void resetPosition() {
+    position.set(200, 375); // Reset to the starting position
+  }
   
   
 }

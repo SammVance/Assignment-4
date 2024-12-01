@@ -33,13 +33,12 @@ class Lane {
  }
  } 
  
- boolean checkCollision(Player p) {
-   for(Obstacle obs : obstacles) {
-     if(obs.playerCollision(p)) {
-       return true;
-     }
-   }
-   return false;
- }
-  
+  boolean checkCollision(Player p) {
+    for (Obstacle obs : obstacles) {
+      if (obs.playerCollision(p)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

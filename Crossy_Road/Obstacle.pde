@@ -39,7 +39,18 @@ class Obstacle {
   
   
   boolean playerCollision(Player p) {
-    return (position.x < p.position.x + p.size && position.x + p.size > p.position.x && position.y < p.position.y + p.size && position.y + 50 > p.position.y);
+    // Precise collision based on Jeffrey Thompson Collision Detection
+    float playerRadius = p.size / 2;
+    float playerCenterX = p.position.x;
+    float playerCenterY = p.position.y;
+
+    float closestX = constrain(playerCenterX, position.x, position.x + w);
+    float closestY = constrain(playerCenterY, position.y, position.y + h);
+
+    float distanceX = playerCenterX - closestX;
+    float distanceY = playerCenterY - closestY;
+
+    return (distanceX * distanceX + distanceY * distanceY) < (playerRadius * playerRadius);
   }
   
 }
