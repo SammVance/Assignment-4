@@ -22,6 +22,20 @@ void setup() {
 
 void draw() {
   background(255);
+    
+  // Game Over screen  
+  if(lives <= 0) {
+    gameOver = true;
+    textAlign(CENTER);
+    textSize(32);
+    fill(0);
+    text("Game Over", width/2, 160);
+    
+    textSize(24);
+    fill(100);
+    text("Click to Play Again", width/2, height/2);
+    return;
+  }
   
   // Display Lanes and Obstacles
   for(Lane lane : lanes) {
@@ -52,3 +66,13 @@ void drawHearts() {
     image(heartImage, width - (i + 1) * (hSize + 5), height - hSize - 5, hSize, hSize);
   }
 }
+
+void mousePressed() {
+  if(gameOver) {
+    lives = 3;
+    player.resetPosition();
+    gameOver = false;
+  }
+}
+    
+    
