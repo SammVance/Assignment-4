@@ -3,11 +3,11 @@
 class Player {
   
   PVector position; // Set the position of the player
-  float speed = 10; // Bigger movements to better showcase moving across lanes
+  float speed = 5; // Bigger movements to better showcase moving across lanes
   float size;
   
  Player() {
-   position = new PVector(200,375); // Initializes starting position of the player character
+   position = new PVector(200,390); // Initializes starting position of the player character
    size = 20;
    
  }
@@ -42,7 +42,7 @@ class Player {
  }
  
  void resetPosition() {
-    position.set(200, 375); // Reset to the starting position
+    position.set(200, 390); // Reset to the starting position
   }
   
   

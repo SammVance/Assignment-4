@@ -7,7 +7,7 @@ class Lane {
   PImage water;
   
  Lane(float y, float speed) {
-   laneY = y;
+   laneY = y-25;
    laneSpeed = speed;
    obstacles = new ArrayList<Obstacle>();
    
@@ -35,6 +35,10 @@ class Lane {
      obs.display();
    }
  } 
+ 
+ void increaseSpeed(int level) {
+   laneSpeed += level * 0.5; // Increase the lane speed based on the current level
+ }
  
   boolean checkCollision(Player p) {
     for (Obstacle obs : obstacles) {
