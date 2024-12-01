@@ -11,7 +11,7 @@ class Obstacle {
     velocity = new PVector(random(-2,2), random(-2,2));
     acceleration = new PVector(-0.001, 0.01);
     w = random(25, 125); // Varying obstacle lengths
-    h = 50;
+    h = 25;
     // Limit the velocity of the obstacles so they don't continue increasing speed
     topspeed = 10;
     velocity.limit(topspeed);
@@ -25,17 +25,21 @@ class Obstacle {
   
     // Check edges
     if(position.x > width) {
-     position.x = 0;
-   } if(position.x < 0) {
+     position.x = -50;
+   } if(position.x < -50) {
        position.x = width;
    }
   }
 
   
   void display() {
-    fill(255,0,0);
+    fill(103,67,19);
     rect(position.x, position.y, w, h);
   }
   
+  
+  boolean playerCollision(Player p) {
+    return (position.x < p.position.x + p.size && position.x + p.size > p.position.x && position.y < p.position.y + p.size && position.y + 50 > p.position.y);
+  }
   
 }

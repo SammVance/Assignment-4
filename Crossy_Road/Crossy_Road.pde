@@ -9,8 +9,8 @@ void setup() {
  lanes = new ArrayList<Lane>();
  
  // Create various lanes with differinng speeds and directions of obstacles
- for(int i = 0; i < 4; i++) {
-   lanes.add(new Lane(i * 100, random(2,5) * (random(1) > 0.5 ? 1 : -1)));
+ for(int i = 0; i < 7; i++) { // Create 6 lanes
+   lanes.add(new Lane(i * 50, random(2,5) * (random(1) > 0.5 ? 1 : -1)));
  }
 }
 
@@ -19,12 +19,13 @@ void draw() {
   
   // Display Lanes and Obstacles
   for(Lane lane : lanes) {
+    if(lane.checkCollision(player)) {
+    gameOver = true;
+  } else {
     lane.update();
     lane.display();
   }
-  
-  if(gameOver == true) {
-  } else {
+
   
   // Draw player character
   player.display();

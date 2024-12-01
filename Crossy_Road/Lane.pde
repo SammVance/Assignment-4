@@ -11,7 +11,7 @@ class Lane {
    obstacles = new ArrayList<Obstacle>();
    
    // Referring to the ArrayList, add random obstacles to the lane
-   for(int i = 0; i < 4; i++) {
+   for(int i = 0; i < 2; i++) { // How many obstacles are in a lane
      float x = random(width);
      obstacles.add(new Obstacle(x, laneY));
    }
@@ -26,11 +26,20 @@ class Lane {
  
  void display() {
   fill(83,213,234);
-  rect(0, laneY, width, 50);
+  rect(0, laneY, width, 25);
   // Obstacles will display within the lanes
   for(Obstacle obs : obstacles) {
     obs.display();
  }
  } 
+ 
+ boolean checkCollision(Player p) {
+   for(Obstacle obs : obstacles) {
+     if(obs.playerCollision(p)) {
+       return true;
+     }
+   }
+   return false;
+ }
   
 }

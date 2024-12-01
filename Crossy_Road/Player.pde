@@ -4,16 +4,18 @@ class Player {
   
   PVector position; // Set the position of the player
   float speed = 10; // Bigger movements to better showcase moving across lanes
+  float size;
   
  Player() {
-   position = new PVector(200,200); // Initializes starting position of the player character
+   position = new PVector(200,375); // Initializes starting position of the player character
+   size = 20;
    
  }
  
  
  void display() {
    fill(0);
-   ellipse(position.x, position.y, 25, 25);
+   ellipse(position.x, position.y, size, size);
    
  }
  
