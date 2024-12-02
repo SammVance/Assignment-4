@@ -2,9 +2,11 @@ Player player;
 ArrayList<Lane> lanes;
 
 boolean gameOver = false;
+boolean istitlescreen = true;
 PImage heart, greyHeart, background;
 int lives = 3;
 int level = 0; // Initial level
+int dist = 60;
 
 PImage[] levelDigits = new PImage[10]; // Array to hold images for 0-9
 
@@ -24,12 +26,15 @@ void setup() {
  }
  
  // Create various lanes with differinng speeds and directions of obstacles
- for(int i = 0; i < 7; i++) { // Create 6 lanes
-   lanes.add(new Lane(i * 60, random(2,5) * (random(1) > 0.5 ? 1 : -1)));
+ for(int i = 0; i < 5; i++) { // Create 6 lanes
+   lanes.add(new Lane(i * dist, random(2,5) * (random(1) > 0.5 ? 1 : -1)));
  }
 }
 
 void draw() {
+   if(istitlescreen) {
+    titleScreen();
+   } else {
   image(background, 0, 0, width, height);
   
   // Game Over screen  
@@ -42,7 +47,8 @@ void draw() {
     
     textSize(24);
     fill(0);
-    text("Click to Play Again", width/2, height/2);
+    text("Click to Main Menu", width/2, height/2);
+    
     return;
   }
   
@@ -57,10 +63,10 @@ void draw() {
   }
   }
 
-  
   // Draw player character
   player.display();
   player.move();
+  player.update();
   
   // Level Checker
   if(player.position.y <= 0) {
@@ -75,6 +81,7 @@ void draw() {
   // Draw the hearts based on the number of lives
   drawHearts();
   displayLevel(level);
+   }
 }
 
 void displayLevel(int level) {
@@ -98,13 +105,37 @@ void drawHearts() {
   }
 }
 
+void titleScreen() {
+  image(background, 0, 0, width, height);
+  
+  // Display Title text
+  textAlign(CENTER);
+  textSize(48);
+  fill(0);
+  text("Crossy River", width/2, height/3);
+  
+  // Play button
+  fill(50,100,200);
+  rect(width/2-100, height/2, 200, 50);
+  fill(0);
+  textSize(32);
+  text("Play", width/2, height/2 +35);
+}
+
 void mousePressed() {
-  if(gameOver) {
-    lives = 3;
-    player.resetPosition();
-    gameOver = false;
-    level = 0;
-  }
+
+  if(istitlescreen) {
+    // Check where the mouse is
+    if(mouseX > width/2-100 && mouseX < width/2+100 && mouseY > height/2 && mouseY < height/2 +50) {
+      istitlescreen = false; // Press play
+    }
+  } else if(gameOver) {
+      lives = 3;
+      player.resetPosition();
+      gameOver = false;
+      istitlescreen = true;
+      level = 0;
+    } 
 }
     
     

@@ -39,6 +39,9 @@ class Obstacle {
     image(log, position.x, position.y, w, h);
   }
   
+  void reset(float speed) {
+    velocity.x = speed;
+  }
   
   boolean playerCollision(Player p) {
     // Precise collision based on Jeffrey Thompson Collision Detection

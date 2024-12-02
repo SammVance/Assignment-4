@@ -7,11 +7,19 @@ class Player {
   float size;
   
  Player() {
-   position = new PVector(200,390); // Initializes starting position of the player character
+   position = new PVector(200,400); // Initializes starting position of the player character
    size = 20;
    
  }
  
+ void update() {
+    // Check edges
+    if(position.x > width) {
+     position.x = -10;
+   } if(position.x < -10) {
+       position.x = width;
+   }
+  }
  
  void display() {
    fill(0);
@@ -42,7 +50,7 @@ class Player {
  }
  
  void resetPosition() {
-    position.set(200, 390); // Reset to the starting position
+    position.set(200, 400); // Reset to the starting position
   }
   
   
