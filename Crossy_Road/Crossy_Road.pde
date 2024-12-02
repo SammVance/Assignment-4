@@ -84,7 +84,7 @@ void draw() {
    }
 }
 
-void displayLevel(int level) {
+void displayLevel(int level) { 
   int xPos = width/2 - 15; // Position of the level digits
   int lSize = 35;
   int digit1 = level/10; // Tenths
@@ -135,6 +135,10 @@ void mousePressed() {
       gameOver = false;
       istitlescreen = true;
       level = 0;
+      
+      for(Lane lane : lanes) {
+        lane.reset();
+      }
     } 
 }
     

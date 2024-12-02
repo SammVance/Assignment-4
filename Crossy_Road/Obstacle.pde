@@ -40,7 +40,8 @@ class Obstacle {
   }
   
   void reset(float speed) {
-    velocity.x = speed;
+    velocity.x = speed * random(0.5, 1.5);
+    position.x = random(width); // Avoids starting in the same location as before
   }
   
   boolean playerCollision(Player p) {

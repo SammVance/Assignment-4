@@ -13,7 +13,7 @@ class Lane {
    water = loadImage("water.jpg");
    
    // Referring to the ArrayList, add random obstacles to the lane
-   for(int i = 0; i < 2; i++) { // How many obstacles are in a lane
+   for(int i = 0; i < 3; i++) { // How many obstacles are in a lane
      float x = random(width);
      obstacles.add(new Obstacle(x, laneY));
    }
@@ -22,7 +22,7 @@ class Lane {
  void reset() {
    laneSpeed = defspeed;
    for(Obstacle obs : obstacles) {
-     obs.reset(defspeed);
+     obs.reset(laneSpeed);
    }
  }
  
