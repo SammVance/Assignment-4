@@ -1,4 +1,4 @@
-// Create lanes for the obstacles to move across and a way for the player to score points
+// Create lanes for the obstacles to move across
 
 class Lane {
   float laneY, laneSpeed, defspeed;
@@ -20,6 +20,7 @@ class Lane {
    }
  }
  
+ // Reset the lane speeds back to a randomized default speed
  void reset() {
    for(Obstacle obs : obstacles) {
      float newSpeed = random(1,2) * (defspeed > 0 ? 1 : -1);
@@ -47,6 +48,8 @@ class Lane {
    laneSpeed += level * 0.5; // Increase the lane speed based on the current level
  }
  
+ 
+ // Collision check
   boolean checkCollision(Player p) {
     for (Obstacle obs : obstacles) {
       if (obs.playerCollision(p)) {

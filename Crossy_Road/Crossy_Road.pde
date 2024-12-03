@@ -6,7 +6,7 @@ boolean istitlescreen = true;
 PImage heart, greyHeart, background;
 int lives = 3;
 int level = 0; // Initial level
-int dist = 60;
+int dist = 60; // Distance between Lanes
 
 PImage[] levelDigits = new PImage[10]; // Array to hold images for 0-9
 
@@ -32,9 +32,11 @@ void setup() {
 }
 
 void draw() {
+  // Launch game with Title Screen
    if(istitlescreen) {
     titleScreen();
    } else {
+     // Or else, execute game
   image(background, 0, 0, width, height);
   
   // Game Over screen  
@@ -69,14 +71,14 @@ void draw() {
   player.update();
   
   // Level Checker
+  // Once the player reaches the top of the screen, the level increases and the player's position is reset
   if(player.position.y <= 0) {
     level++;
     player.resetPosition();
     for(Lane lane : lanes) {
-      lane.increaseSpeed(level);
+      lane.increaseSpeed(level); // Lane speed increase will increase difficulty for the later levels
     }
   }
-  
   
   // Draw the hearts based on the number of lives
   drawHearts();
@@ -126,11 +128,11 @@ void mousePressed() {
 
   if(istitlescreen) {
     // Check where the mouse is
-    if(mouseX > width/2-100 && mouseX < width/2+100 && mouseY > height/2 && mouseY < height/2 +50) {
+    if(mouseX > width/2-100 && mouseX < width/2+100 && mouseY > height/2 && mouseY < height/2 +50) { // Checking to see if the mouse is overlapping with the button
       istitlescreen = false; // Press play
       level = 0;
       for(Lane lane : lanes) {
-        lane.reset();
+        lane.reset(); // Resets the lane speeds back to default
       }
     }
   } else if(gameOver) {
@@ -139,8 +141,6 @@ void mousePressed() {
       gameOver = false;
       istitlescreen = true;
       level = 0;
-      
-
     } 
 }
     

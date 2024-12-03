@@ -27,7 +27,6 @@ class Player {
    
  }
  
- 
  void move() {
    // Move the player character using the arrow keys
    if(keyPressed) {
@@ -44,14 +43,9 @@ class Player {
        position.x += speed;
      }
    }
-   // If player character goes off screen, initiate game over
-   
-   
  }
  
  void resetPosition() {
     position.set(200, 400); // Reset to the starting position
   }
-  
-  
 }

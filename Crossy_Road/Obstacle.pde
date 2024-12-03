@@ -33,12 +33,12 @@ class Obstacle {
        position.x = width;
    }
   }
-
   
   void display() {
     image(log, position.x, position.y, w, h);
   }
   
+  // Reset the obstacle speed and positioning
   void reset(float speed) {
     velocity.x = speed * random(0.5, 1.5);
     position.x = random(width); // Avoids starting in the same location as before
@@ -58,5 +58,4 @@ class Obstacle {
 
     return (distanceX * distanceX + distanceY * distanceY) < (playerRadius * playerRadius);
   }
-  
 }
