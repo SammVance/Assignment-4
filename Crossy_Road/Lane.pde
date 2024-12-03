@@ -8,6 +8,7 @@ class Lane {
  Lane(float y, float speed) {
    laneY = y+50;
    laneSpeed = speed;
+   defspeed = speed; // Store default speed
    obstacles = new ArrayList<Obstacle>();
    
    water = loadImage("water.jpg");
@@ -20,9 +21,9 @@ class Lane {
  }
  
  void reset() {
-   laneSpeed = defspeed;
    for(Obstacle obs : obstacles) {
-     obs.reset(laneSpeed);
+     float newSpeed = random(1,2) * (defspeed > 0 ? 1 : -1);
+     obs.reset(newSpeed);
    }
  }
  

@@ -128,6 +128,10 @@ void mousePressed() {
     // Check where the mouse is
     if(mouseX > width/2-100 && mouseX < width/2+100 && mouseY > height/2 && mouseY < height/2 +50) {
       istitlescreen = false; // Press play
+      level = 0;
+      for(Lane lane : lanes) {
+        lane.reset();
+      }
     }
   } else if(gameOver) {
       lives = 3;
@@ -136,9 +140,7 @@ void mousePressed() {
       istitlescreen = true;
       level = 0;
       
-      for(Lane lane : lanes) {
-        lane.reset();
-      }
+
     } 
 }
     
